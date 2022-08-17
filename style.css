@@ -62,27 +62,22 @@ body
     transform: scale(1);
     margin: 2rem auto;
 }
-.report-card::before
+.rect
 {
-    content: '';
     position: absolute;
     top: 0;
     left: 26rem;
     background-color: rgba(255,255,255,0.1);
-    z-index: 2;
+    z-index: 3;
     height: calc(100% + 3rem);
     width: 6rem;
     transform-origin: center center;
     transform: skew(-45deg);
     border: 1px solid rgba(255,255,255,0.2);
-    transition: left 0s ease-in;
+    transition: left .5s ease-in;
     box-shadow: rgba(0,0,0,0.3) 1rem 1rem 1rem;
 }
-.report-card:hover::before
-{
-    left: -15rem;
-    transition: left .5s ease-out;
-}
+
 .report-card:hover
 {
     filter: contrast(1.5);

@@ -25,29 +25,27 @@ function getReportCard(data)
     <section class="report-previous-time-container">
       <h4 class="report-previous-time" id="report-previous-time-${title}">Lask week - ${data.timeframes.weekly.previous}hrs</h4>
     </section>
-    
-  </div>`;
+  
+  </div>
+  <div class="rect" id="rect-${title}"></div>`;
 
   reportCard.attributes.mousecount.value = "1";
 
   reportCard.addEventListener("mouseenter", () => {
-
-    const shouldScale = parseInt(reportCard.attributes.mousecount.value);
-
-    if (shouldScale)
-    {
-        reportCard.style.transform = "scale(1.1)";
-        reportCard.attributes.mousecount.value = "0";
+    let rectangle = reportCard.children[2];
+    reportCard.style.transform = "scale(1.1)";
+        rectangle.style.left = "-15rem"
         setTimeout(() => {
+            rectangle.style.transition = "left 0s ease-out";
             reportCard.style.transform = "scale(1)";
-        }, 250);
-    }
-  });
+            rectangle.style.left = "26rem";
+            setTimeout(() => {
+              rectangle.style.transition = "left .5s ease-out";
+            }, 100);
+        }, 500);
+    });
 
-  reportCard.addEventListener("mouseleave", () => {
 
-    reportCard.attributes.mousecount.value = "1";
-  });
 
   reportCardContainer.append(reportCard);
 }
