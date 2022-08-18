@@ -17,10 +17,6 @@
     --exercise: rgba(74, 207, 129, var(--card-opacity));
     --social: rgba(117, 54, 211, var(--card-opacity));
     --self-care: rgba(241, 198, 91, var(--card-opacity));
-    --very-dark-blue: hsl(226, 43%, 10%);
-    --dark-blue: hsl(235, 46%, 20%);
-    --desaturated-blue: hsl(235, 45%, 61%);
-    --pale-blue: hsl(236, 100%, 87%);
     --font: "Rubik", Arial, sans-serif;
     --card-angle: 45deg;
     --background-color: hsl(0, 0%, 3.5%);
@@ -127,6 +123,7 @@ body
     font-weight: 500;
 }
 
+/* Unique color for each card */
 #report-card-work {background-image: linear-gradient(var(--card-angle), var(--work) 0%, rgba(50,50,50,0.1) 50%);}
 #report-card-play {background-image: linear-gradient(var(--card-angle), var(--play) 0%, rgba(50,50,50,0.1) 50%);}
 #report-card-study {background-image: linear-gradient(var(--card-angle), var(--study) 0%, rgba(50,50,50,0.1) 50%);}
@@ -210,12 +207,17 @@ aside
     font-weight: 700;
     padding: .75rem 1rem;
 }
+#aside-section-2 > ul > li > button:hover
+{
+    background-color: #111;
+}
 .active-section
 {
     background-image: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 50%) !important;
 }
 
-@media screen and (min-width: 460px)
+
+@media screen and (min-width: 480px)
 {
     .main-container
     {

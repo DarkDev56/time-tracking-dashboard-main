@@ -10,6 +10,7 @@
 <body>
 
   <div class="main-container">
+
     <aside>
       <div id="aside-section-1">
         <div class="aside-avatar-container">
@@ -22,19 +23,17 @@
       </div>
       <div id="aside-section-2">
         <ul id="aside-btns">
-          <li><button onclick="UpdateCards('daily')">Daily</button></li>
-          <li><button class="active-section" onclick="UpdateCards('weekly')">Weekly</button></li>
-          <li><button onclick="UpdateCards('monthly')">Monthly</button></li>
+          <li><button onclick="UpdateCards('daily')" id="button-daily">Daily</button></li>
+          <li><button class="active-section" onclick="UpdateCards('weekly')" id="button-weekly">Weekly</button></li>
+          <li><button onclick="UpdateCards('monthly')" id="button-monthly">Monthly</button></li>
         </ul>
       </div>
-      
     </aside>
   
-    <main class="report-cards-container">
-    </main>
+    <main class="report-cards-container"></main>
+
   </div>
 
   <script src="./script.js"></script>
-
 </body>
 </html>

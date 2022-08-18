@@ -1,10 +1,7 @@
+// DOM Elements
 const reportCardContainer = document.getElementsByClassName("report-cards-container")[0];
-let cardsState = "weekly";
-let hover = new MouseEvent('mouseenter', {
-  'view': window,
-  'bubbles': true,
-  'cancelable': true
-});
+
+// Utils
 const getSnakeCase = x => x.split(" ").join("-").toLowerCase();
 const getWordForState = (word) => {
   switch(word)
@@ -17,7 +14,16 @@ const getWordForState = (word) => {
       return "month"
   }
 }
+const hover = new MouseEvent('mouseenter', {
+  'view': window,
+  'bubbles': true,
+  'cancelable': true
+});
 
+// States
+let cardsState = "weekly";
+
+// Create report cards from data.json
 function getReportCard(data)
 {
     const title = getSnakeCase(data.title);
@@ -25,9 +31,9 @@ function getReportCard(data)
 
     reportCard.id = `report-card-${title}`;
     reportCard.classList.add("report-card");
-    reportCard.setAttribute("mousecount", "1");
 
-    reportCard.innerHTML = `<div class="report-icon-container">
+    reportCard.innerHTML = `
+  <div class="report-icon-container">
     <img src="./images/icon-${title}.svg" alt="${title}" class="report-icon">
   </div>
   <div class="report-content">
@@ -41,12 +47,10 @@ function getReportCard(data)
     <section class="report-previous-time-container">
       <h4 class="report-previous-time" id="report-previous-time-${title}">Lask week - ${data.timeframes.weekly.previous}hrs</h4>
     </section>
-  
   </div>
   <div class="rect" id="rect-${title}"></div>`;
 
-  reportCard.attributes.mousecount.value = "1";
-
+  // Animation
   reportCard.addEventListener("mouseenter", () => {
     let rectangle = reportCard.children[2];
     reportCard.style.transform = "scale(1.1)";
@@ -61,25 +65,19 @@ function getReportCard(data)
         }, 500);
     });
 
-
-
   reportCardContainer.append(reportCard);
 }
 
-fetch("./data.json").then(res => res.json()).then(data => {
-    for (let i = 0; i < data.length; i++)
-    {
-        let item = data[i];
-        getReportCard(item);
-    }
-});
-
+// Update cards when user switches by clicking on buttons
 function UpdateCards(type)
 {
   if (type === cardsState) return;
   else
   {
+
+    document.getElementById(`button-${cardsState}`).classList.remove("active-section");
     cardsState = type;
+    document.getElementById(`button-${type}`).classList.add("active-section");
     
     fetch("./data.json").then(res => res.json()).then(data => {
       
@@ -89,10 +87,12 @@ function UpdateCards(type)
 
         const title = getSnakeCase(report.title);
         const requiredTimeframes = report.timeframes[cardsState];
+
         const reportCard = document.getElementById(`report-card-${title}`);
         const currentTime = document.getElementById(`report-current-time-${title}`);
         const previousTime = document.getElementById(`report-previous-time-${title}`);
 
+        // Animation
         setTimeout(() => {
 
           reportCard.dispatchEvent(hover);
@@ -105,3 +105,12 @@ function UpdateCards(type)
     });
   }
 }
+
+// Load Cards
+fetch("./data.json").then(res => res.json()).then(data => {
+  for (let i = 0; i < data.length; i++)
+  {
+      let item = data[i];
+      getReportCard(item);
+  }
+});
