@@ -28,8 +28,8 @@ Users should be able to:
 
 ### Links
 
-- Frontend Mentor: [https://www.frontendmentor.io/challenges/time-tracking-dashboard-UIQ7167Jw]()
-- Live Site URL: [https://darkdev56.github.io/time-tracking-dashboard-main/]()
+- Frontend Mentor: [https://www.frontendmentor.io/challenges/time-tracking-dashboard-UIQ7167Jw](https://www.frontendmentor.io/challenges/time-tracking-dashboard-UIQ7167Jw)
+- Live Site URL: [https://darkdev56.github.io/time-tracking-dashboard-main/](https://darkdev56.github.io/time-tracking-dashboard-main/)
 
 ## My process
 
