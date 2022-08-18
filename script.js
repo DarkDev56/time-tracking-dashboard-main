@@ -1,6 +1,22 @@
 const reportCardContainer = document.getElementsByClassName("report-cards-container")[0];
-
+let cardsState = "weekly";
+let hover = new MouseEvent('mouseenter', {
+  'view': window,
+  'bubbles': true,
+  'cancelable': true
+});
 const getSnakeCase = x => x.split(" ").join("-").toLowerCase();
+const getWordForState = (word) => {
+  switch(word)
+  {
+    case "daily":
+      return "day";
+    case "weekly":
+      return "week";
+    case "monthly":
+      return "month"
+  }
+}
 
 function getReportCard(data)
 {
@@ -57,3 +73,35 @@ fetch("./data.json").then(res => res.json()).then(data => {
         getReportCard(item);
     }
 });
+
+function UpdateCards(type)
+{
+  if (type === cardsState) return;
+  else
+  {
+    cardsState = type;
+    
+    fetch("./data.json").then(res => res.json()).then(data => {
+      
+      for (let i = 0; i < data.length; i++)
+      {
+        const report = data[i];
+
+        const title = getSnakeCase(report.title);
+        const requiredTimeframes = report.timeframes[cardsState];
+        const reportCard = document.getElementById(`report-card-${title}`);
+        const currentTime = document.getElementById(`report-current-time-${title}`);
+        const previousTime = document.getElementById(`report-previous-time-${title}`);
+
+        setTimeout(() => {
+
+          reportCard.dispatchEvent(hover);
+          currentTime.innerText = `${requiredTimeframes.current}hrs`;
+          previousTime.innerText = `Last ${getWordForState(cardsState)} - ${requiredTimeframes.previous}hrs`;
+  
+        }, i * 150);
+
+      }
+    });
+  }
+}

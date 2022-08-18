@@ -250,7 +250,7 @@ aside
     }
 }
 
-@media screen and (min-height: 900px)
+@media screen and (min-width: 600px) and (min-height: 900px)
 {
     body
     {
@@ -317,7 +317,7 @@ aside
     
 }
 
-@media screen and (min-width: 1150px)
+@media screen and (min-width: 1150px) and (min-height: 625px)
 {
     :root
     {
