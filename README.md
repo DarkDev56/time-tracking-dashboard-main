@@ -1,7 +1,7 @@
 # time-tracking-dashboard-main
 
 [Frontend Mentor](https://www.frontendmentor.io/)
-Challenge #7 - Junior Level
+Challenge #7 - Junior Level (Glassmorphism effect and CSS Hover and Click Animations)
 
 ## Table of contents
 
@@ -11,9 +11,6 @@ Challenge #7 - Junior Level
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
-  - [Useful resources](#useful-resources)
-
-### **Glassmorphism effect and CSS Hover and Click Animations**
 
 ## Overview
 
@@ -28,8 +25,6 @@ Users should be able to:
 ### Screenshot
 
 ![desktop](https://user-images.githubusercontent.com/69717081/185427059-9f78ff50-2f2a-4eed-ad50-33214e345237.png)
-
-
 
 ### Links
 
